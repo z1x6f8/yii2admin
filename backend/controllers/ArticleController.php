@@ -4,16 +4,13 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Article;
-use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
-use common\models\Category;
 use backend\models\search\ArticleSearch;
 use yii\web\NotFoundHttpException;
 
 /**
  * 文章控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class ArticleController extends BaseController
 {
@@ -45,7 +42,7 @@ class ArticleController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Article');
-            $data['create_time'] = time();
+            //$data['create_time'] = time(); // backend/models/Article->behaviors()自动完成时间更新
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
@@ -82,7 +79,7 @@ class ArticleController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Article');
-            $data['update_time'] = time();
+            //$data['update_time'] = time(); // backend/models/Article->behaviors()自动完成时间更新
             /* 格式化extend值，为空或数组序列化 */
             if ($data['extend']) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);

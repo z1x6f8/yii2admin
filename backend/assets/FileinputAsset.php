@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class FileinputAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/metronic';
+    public $sourcePath = '@common/metronic';
     /* 全局CSS文件 */
     public $css = [
         'global/plugins/bootstrap-fileinput/bootstrap-fileinput.css',

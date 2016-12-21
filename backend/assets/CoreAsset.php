@@ -15,7 +15,7 @@ use yii\web\AssetBundle;
  */
 class CoreAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/metronic';
+    public $sourcePath = '@common/metronic';
     /* 全局CSS文件 */
     public $css = [
         'http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all',

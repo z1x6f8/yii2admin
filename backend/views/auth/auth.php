@@ -14,7 +14,7 @@ use common\helpers\ArrayHelper;
 /* ===========================以下为本页配置信息=========================== */
 /* 页面基本属性 */
 $this->title = '角色授权管理';
-$this->context->title_sub = '';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 ?>
 
@@ -67,10 +67,10 @@ $this->context->title_sub = '';
                         </div>
                         
                         <div>
-                        <?php if (!empty($child['operator'])) : ?>
+                        <?php if (!empty($child['child'])) : ?>
                             <div class="form-group" style="margin-left:50px;margin-bottom:0px;">
                                 <div class="mt-checkbox-inline" style="padding:2px 0;">
-                                    <?php foreach ($child['operator'] as $op): ?>
+                                    <?php foreach ($child['child'] as $op): ?>
                                     <label class="mt-checkbox mt-checkbox-outline" style="margin-bottom:5px;">
                                         <input type="checkbox" name="rules[]" value="<?php echo $op['url'] ?>" <?php echo in_array($op['url'],$auth_rules) ?'checked':''; ?> />
                                         <span></span>

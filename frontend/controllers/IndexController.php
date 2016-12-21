@@ -6,14 +6,15 @@ use yii\web\Controller;
 
 class IndexController extends Controller
 {
+    /**
+     * @var string
+     */
+    public $layout = 'main1';
+
     public function actionIndex()
     {
-        phpinfo();
+        //phpinfo();
         return $this->render('index');
     }
-    public function actionView()
-    {
-
-        return $this->render('index');
-    }
+    
 }

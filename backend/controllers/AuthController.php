@@ -4,11 +4,24 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\Admin;
+use backend\models\Menu;
 use common\models\AuthAssignment;
 
+/**
+ * 身份授权控制器
+ * @author longfei <phphome@qq.com>
+ */
 class AuthController extends BaseController
 {
+    /**
+     * @var \common\core\rbac\DbManager
+     */
     public $authManager;
+
+    /**
+     * @var bool 这里很多自定义的表单，就没有添加验证
+     */
+    public $enableCsrfValidation = false;
 
     /**
      * ---------------------------------------
@@ -134,7 +147,7 @@ class AuthController extends BaseController
         }
 
         /* 获取栏目节点 */
-        $node_list  = $this->returnNodes();
+        $node_list  = Menu::returnNodes();
         $auth_rules = Yii::$app->authManager->getChildren($role);
         $auth_rules = array_keys($auth_rules);//var_dump($auth_rules);exit;
 

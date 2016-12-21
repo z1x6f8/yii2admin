@@ -6,15 +6,31 @@ use Yii;
 use backend\models\Ad;
 use backend\models\search\AdSearch;
 use yii\web\NotFoundHttpException;
+use yii\filters\VerbFilter;
 
 
 /**
  * 栏目控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class AdController extends BaseController
 {
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            /* 访问控制 */
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['post'],
+                ],
+            ],
+        ];
+    }
+
     /**
      * ---------------------------------------
      * 列表页

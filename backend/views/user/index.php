@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 use yii\grid\GridView;
 
 /* @var $model common\models\User */
@@ -11,7 +10,7 @@ use yii\grid\GridView;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '用户管理';
-$this->context->title_sub = '管理用户信息';
+$this->params['title_sub'] = '管理用户信息';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 加载页面级别资源 */
 \backend\assets\TablesAsset::register($this);
@@ -132,6 +131,7 @@ $columns = [
         </div>
     </div>
     <div class="portlet-body">
+        <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
             <?php echo $this->render('_search', ['model' => $searchModel]); ?> <!-- 条件搜索-->
         </div>
@@ -160,6 +160,7 @@ $columns = [
             ]); ?>
             </form>
         </div>
+        <?php \yii\widgets\Pjax::end(); ?>
     </div>
 </div>
 

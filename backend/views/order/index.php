@@ -2,11 +2,15 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Category;
 
 /* @var $model common\models\Order */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
 /* @var $searchModel backend\models\search\OrderSearch */
+
+/* ===========================以下为本页配置信息================================= */
+/* 页面基本属性 */
+$this->title = '订单管理';
+$this->params['title_sub'] = '订单管理副标题';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 先要注册表格所须的资源 */
 \backend\assets\TablesAsset::register($this);
@@ -164,6 +168,7 @@ $columns = [
         </div>
     </div>
     <div class="portlet-body">
+        <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
             <?php //echo $this->render('_search', ['model' => $searchModel]); ?> <!-- 条件搜索-->
         </div>
@@ -192,21 +197,10 @@ $columns = [
             ]); ?>
             </form>
         </div>
+        <?php \yii\widgets\Pjax::end(); ?>
     </div>
 </div>
 
-
-
-<?php
-/* ===========================以下为本页配置信息================================= */
-/* 页面基本属性 */
-$this->title = '订单管理';
-$this->context->title_sub = '';
-
-/* 渲染其他文件 */
-//echo $this->renderFile('@app/views/public/login.php');
-
-?>
 
 <!-- 定义数据块 -->
 <?php $this->beginBlock('test'); ?>

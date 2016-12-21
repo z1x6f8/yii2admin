@@ -5,17 +5,13 @@ namespace backend\controllers;
 use Yii;
 use backend\models\Order;
 use backend\models\search\OrderSearch;
-use backend\models\Shop;
-use backend\models\Train;
 use common\helpers\ArrayHelper;
 use common\helpers\FuncHelper;
 use yii\web\NotFoundHttpException;
 
-
 /**
  * 订单控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
 class OrderController extends BaseController
 {
@@ -57,18 +53,18 @@ class OrderController extends BaseController
         if (Yii::$app->request->isPost) {
             
             $data = Yii::$app->request->post('Order');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
             $data['type'] = $type;
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time'] = strtotime($data['end_time']);
             $data['pay_time'] = time();
-            if ($type == 'shop') {
+            /*if ($type == 'shop') {
                 $shang = Shop::info($data['aid']);
                 $data['title'] = $shang['title'];
             } else {
                 $shang = Train::info($data['aid']);
                 $data['title'] = $shang['title'];
-            }
+            }*/$data['title'] = 'test title';
             /* 格式化extend值，为空或数组序列化 */
             if (isset($data['extend'])) {
                 $tmp = FuncHelper::parse_field_attr($data['extend']);
@@ -108,7 +104,7 @@ class OrderController extends BaseController
 
         if (Yii::$app->request->isPost) {
             $data = Yii::$app->request->post('Order');//var_dump($data);exit();
-            $data['update_time'] = time();
+            //$data['update_time'] = time();
             $data['start_time'] = strtotime($data['start_time']);
             $data['end_time']  = strtotime($data['end_time']);
             $data['pay_time']  = strtotime($data['pay_time']);

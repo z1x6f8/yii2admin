@@ -1,4 +1,17 @@
-特别说明，项目刚刚做不久，而且对yii2有些功能不是很熟，难免有缺陷。有什么建议可以联系我：phphome@qq.com
+【最近在更新数据库，源码有很多BUG，如需要可下载下面的“全站打包”文件。。】。成型后的系统包括文章、商城、单页、广告、购物车、订单、标签、评论、推荐位、艾特@、消息、支付和回调、后台rbac、后台行为日志、数据可视化、配置管理等、前台用户中心、会员积分等功能。关注的朋友可以先给个Star。。
+
+特别说明，这是一个学习型的项目（注释会尽量详细，尽量将yii2提供的大部分功能都用一遍），项目成型时间估计半年，刚刚做不久加上对yii2很多功能不熟，难免有缺陷。有什么建议可以联系我：phphome@qq.com
+
+如遇bug请告诉作者哦，花你一分钟时间就可以让项目更易使用.^_^.
+
+github : https://github.com/e282486518/yii2admin 
+
+oschina : http://git.oschina.net/ccdream/yii2admin （国内可以下载这个）
+
+交流：http://www.yiichina.com/code/1052 （遇到bug不愿发邮件的可以贴到这里）
+
+全站打包：https://share.weiyun.com/acfc4ef6e11b403347827ca33de5e803 （不定期更新，安装出错的朋友可以试试这个）
+
 
 ##一、开发基础说明
 * 系统配置文件为.env文件。
@@ -30,6 +43,8 @@ Yii::$app->params['web'] = Config::lists();
 * RBAC权限系统没有使用第三方扩展，其实现大致思路为：一个后台用户对于一个用户组，用户权限和后台栏目一一对应；
 
 * API接口主要使用模块做版本控制，使用RESTfull标准，权限及接口限制参考/api/models/User.php；
+
+* 关于后台权限问题，后台权限是与Menu绑定的，在添加功能时先在后台【系统-菜单管理】中添加列表、增、删、改等菜单，然后到【用户-后台用户-权限管理】中【授权】，可以看到刚刚添加的菜单，勾选并提交后对应的用户组就有了该权限；
 
 ##二、上传图片说明
 
@@ -65,9 +80,9 @@ Yii::$app->params['web'] = Config::lists();
 ```
 1、下载源文件或git clone https://github.com/e282486518/yii2admin.git
 2、composer install #安装依赖扩展
-（如果安装失败可以下载链接：https://share.weiyun.com/10026ab454bef3366a31665709cb8ca8 （password：TgO5））
 3、php ./yii install/install #配置环境、配置数据库并安装数据库
 4、参照 doc 目录下的Nginx和Apache配置文件，配置服务器，并设置hosts文件。
+
 超级管理员账号： admin 123456
 普通管理员： guanli 123456
 编辑人员： feifei 123456
@@ -86,3 +101,4 @@ Yii::$app->params['web'] = Config::lists();
 ![配置皮肤](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/shop.png)
 ![手机版](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/order_edit1.png)
 ![接口调用](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/api.png)
+![前台](https://raw.githubusercontent.com/e282486518/yii2admin/master/doc/preview/frontend.png)

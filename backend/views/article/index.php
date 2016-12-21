@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\models\Category;
+use backend\models\ArticleCat;
 
 /* @var $model common\models\Article */
 /* @var $dataProvider yii\data\ActiveDataProvider  */
@@ -11,7 +11,7 @@ use backend\models\Category;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '内容管理';
-$this->context->title_sub = '';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 /* 加载页面级别资源 */
 \backend\assets\TablesAsset::register($this);
@@ -43,7 +43,7 @@ $columns = [
         'header' => '上级分类',
         'content' => function($model){
             $str = '';
-            $paths = Category::getParents($model['category_id']);
+            $paths = ArticleCat::getParents($model['category_id']);
             foreach ($paths as $value) {
                 $str .= $value['title'] .' > ';
             }
@@ -112,6 +112,7 @@ $columns = [
         </div>
     </div>
     <div class="portlet-body">
+        <?php \yii\widgets\Pjax::begin(['options'=>['id'=>'pjax-container']]); ?>
         <div>
             <?= $this->render('_search', ['model' => $searchModel]); ?>
         </div>
@@ -140,6 +141,7 @@ $columns = [
             ]); ?>
             </form>
         </div>
+        <?php \yii\widgets\Pjax::end(); ?>
     </div>
 </div>
 

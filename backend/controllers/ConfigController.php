@@ -7,12 +7,11 @@ use backend\models\Config;
 use backend\models\search\ConfigSearch;
 use yii\web\NotFoundHttpException;
 
+
 /**
  * 系统配置控制器
- * 作者 ：longfei
- * Email ：phphome@qq.com
+ * @author longfei <phphome@qq.com>
  */
-
 class ConfigController extends BaseController
 {
 
@@ -45,7 +44,7 @@ class ConfigController extends BaseController
         if (Yii::$app->request->isPost) {
             /* 表单验证 */
             $data = Yii::$app->request->post('Config');
-            $data['create_time'] = time();
+            //$data['create_time'] = time();
 
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());
@@ -73,7 +72,7 @@ class ConfigController extends BaseController
         if (Yii::$app->request->isPost) {
             /* 表单验证 */
             $data = Yii::$app->request->post('Config');
-            $data['update_time'] = time();//var_dump($data);exit;
+            //$data['update_time'] = time();//var_dump($data);exit;
 
             if ($this->saveRow($model, $data)) {
                 $this->success('操作成功', $this->getForward());

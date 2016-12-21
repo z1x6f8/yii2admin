@@ -5,8 +5,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use common\core\ActiveForm;
 use common\helpers\ArrayHelper;
-use backend\models\Train;
-use backend\models\Shop;
+//use backend\models\Train;
+//use backend\models\Shop;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
@@ -15,7 +15,7 @@ use backend\models\Shop;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = ($this->context->action->id == 'add' ? '添加' : '编辑') . '订单';
-$this->context->title_sub = '';
+$this->params['title_sub'] = '';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 ?>
 
@@ -39,6 +39,7 @@ $this->context->title_sub = '';
         </div>
     </div>
     <div class="portlet-body form">
+        <!-- 这里注意了，不能使用pjax，因为第三方库中有行内js，会导致js加载失败 -->
         <!-- BEGIN FORM-->
         <?php $form = ActiveForm::begin([
             'options'=>[
@@ -53,13 +54,13 @@ $this->context->title_sub = '';
         <?=$form->field($model, 'tel')->textInput(['class' => 'form-control c-md-2'])->label('电话')->hint('购买人的电话')?>
 
         <?php $type = Yii::$app->request->get('type') ?>
-        <?=$form->field($model, 'aid')->widget(\kartik\widgets\Select2::classname(), [
+        <?php /*echo $form->field($model, 'aid')->widget(\kartik\widgets\Select2::classname(), [
             'data' => $type == 'shop'?Shop::listsKv():Train::listsKv(),
             'options' => ['placeholder' => '选择商品','class'=>'c-md-3'],
             'pluginOptions' => [
                 'allowClear' => true,
             ],
-        ],['class' => 'c-md-3'])->label('商品名称')->hint('商品的名称');?>
+        ],['class' => 'c-md-3'])->label('商品名称')->hint('商品的名称');*/?>
 
         <?=$form->field($model, 'start_time')->widget(\kartik\widgets\DateTimePicker::classname(),[
             'language' => 'zh-CN',
@@ -151,7 +152,7 @@ $this->context->title_sub = '';
         </div>
         
         <?php ActiveForm::end(); ?>
-        
+
         <!-- END FORM-->
     </div>
 </div>

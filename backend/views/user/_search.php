@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\search\CategorySearch */
+/* @var $model backend\models\search\UserSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -13,6 +13,7 @@ use yii\widgets\ActiveForm;
     'method' => 'get',
     'options'=>[
         //'class'=>"form-inline",
+        'data-pjax' => true, //开启pjax搜索
     ]
 ]); ?>
 <div class="row">

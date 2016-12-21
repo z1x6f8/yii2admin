@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use common\core\ActiveForm;
-use common\helpers\ArrayHelper;
-use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\Menu */
@@ -12,7 +10,7 @@ use yii\helpers\Url;
 /* ===========================以下为本页配置信息================================= */
 /* 页面基本属性 */
 $this->title = '添加用户';
-$this->context->title_sub = '添加后台用户';
+$this->params['title_sub'] = '添加前台用户';  // 在\yii\base\View中有$params这个可以在视图模板中共享的参数
 
 ?>
 

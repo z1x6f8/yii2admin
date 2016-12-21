@@ -15,11 +15,13 @@ use yii\web\AssetBundle;
  */
 class LayoutAsset extends AssetBundle
 {
-    public $sourcePath = '@backend/metronic';
+    public $sourcePath = '@common/metronic';
     /* 全局CSS文件 */
     public $css = [
-        'global/css/components-rounded.min.css',
-        'global/css/plugins.min.css',
+        'global/css/components-md.min.css',
+        //'global/css/components-rounded.min.css',
+        'global/css/plugins-md.min.css',
+        //'global/css/plugins.min.css',
 
         'layouts/layout/css/layout.min.css',
         'layouts/layout/css/themes/darkblue.min.css',
